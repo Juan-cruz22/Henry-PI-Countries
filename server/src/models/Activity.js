@@ -2,7 +2,7 @@ const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define(
-        "Country",
+        "Activity",
         {
             id:{
                 type: DataTypes.INTEGER,
@@ -13,26 +13,19 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            image:{
+            dificulty:{
+                type: DataTypes.ENUM("1","2","3","4","5"),
+                allowNull: false,
+            },
+            duration:{
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            region:{
-                type: DataTypes.STRING,
+            season:{
+                type: DataTypes.ENUM("verano", "invierno","primavera", "otoño"),
                 allowNull: false,
-            },
-            capital:{
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            subregion:{
-                type: DataTypes.STRING,
-                allowNull: false,
-            },
-            population:{
-                type: DataTypes.INTEGER,
             },
         },
-        {timestamps: false}
+        { timestamps: false }
     )
 }
