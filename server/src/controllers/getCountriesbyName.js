@@ -4,10 +4,10 @@ const URL = 'http://localhost:5000';
 
 const getCountriesbyName = async (req, res) => {
   try {
-    const { name } = req.params; // Cambiar de req.query a req.params
+    const { name } = req.query; // Utilizar req.query
 
     if (!name) {
-      return res.status(400).json({ error: 'El parámetro de ruta "name" es obligatorio.' });
+      return res.status(400).json({ error: 'El parámetro de consulta "name" es obligatorio.' });
     }
 
     const lowercaseName = name.toLowerCase();
