@@ -1,3 +1,10 @@
-.button {
-  background-color: greenyellow;
+body {
+  background-image: url(https://img1.wallspic.com/crops/5/5/6/8/18655/18655-paisaje_urbano-area_urbana-urbe-area_metropolitana-la_via_navegable-3840x2160.jpg);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 90vh;
+  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+  background-position: center; /* Centra la imagen en el fondo */
+  background-repeat: no-repeat;
 }

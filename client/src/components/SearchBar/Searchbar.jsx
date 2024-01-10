@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import style from "./Searchbar.module.css";
 
 export default function Searchbar({ onSearch: externalOnSearch }) {
   const [countryName, setCountryName] = useState("");
@@ -23,7 +24,7 @@ export default function Searchbar({ onSearch: externalOnSearch }) {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <input
         value={countryName}
         id="inputSearch"

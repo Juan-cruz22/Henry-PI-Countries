@@ -1,0 +1,5 @@
+.container{
+    background-color: gray;
+    display: inline-flex;
+    margin: 20px;
+}

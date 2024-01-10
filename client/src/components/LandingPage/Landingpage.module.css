@@ -1,3 +1,58 @@
+body {
+    background-image: url(https://img1.wallspic.com/crops/5/5/6/8/18655/18655-paisaje_urbano-area_urbana-urbe-area_metropolitana-la_via_navegable-3840x2160.jpg) !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 90vh;
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 350px;
+  }
+
 .button {
-    background-color: green;
+    background-color: #8ccb2f;
+    align-items: center;
+    width: 220px;
+    height: 70px;
+    color: white;
+    font-size: 20px;
+    border-radius: 5%;
+    font-weight: 600;
+}
+
+.button:hover{
+    transition: all 0.5s;
+    background-color: #6a9923;
+    width: 200px;
+    height: 60px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.button:not(:hover){
+    transition: all 0.5s;
+    background-color: #8ccb2f;
+    width: 220px;
+    height: 70px;
+    font-size: 20px;
+    border-radius: 5%;
+}
+
+h1{
+    margin: 0;
+    display: block;
+    margin-top: 68px;
+    text-align: center;
+    font-size: 70px;
+    color: white;
+    z-index: 1;
 }
