@@ -4,7 +4,7 @@ const URL = 'http://localhost:5000';
 
 const getCountriesbyName = async (req, res) => {
   try {
-    const { name } = req.query; // Utilizar req.query
+    const { name } = req.params; // Utilizar req.query
 
     if (!name) {
       return res.status(400).json({ error: 'El parámetro de consulta "name" es obligatorio.' });

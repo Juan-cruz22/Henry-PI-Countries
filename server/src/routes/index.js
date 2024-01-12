@@ -8,8 +8,8 @@ const { Router } = require("express");
 const router = Router();
 
 router.get('/countries', getCountries);
-router.get('/countries/:id', getCountriesbyId);
-router.get('/countries/name', getCountriesbyName);
+router.get('/countries/:name', getCountriesbyName);
+router.get('/countries/:id', getCountriesbyId );
 router.get('/activities', getActivities);
 router.post('/activities', createActivity); // Ruta para crear actividades
 
