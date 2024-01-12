@@ -1,37 +1,31 @@
 import React, { useState } from "react";
 import style from "./Searchbar.module.css";
+import axios from "axios";
 
-export default function Searchbar({ onSearch: externalOnSearch }) {
-  const [countryName, setCountryName] = useState("");
+export default function Searchbar({ onSearch }) {
+  const [name, setName] = useState('');
 
-  const handleSearch = async () => {
+  const handleChange = async (event) => {
+    const newName = event.target.value;
+    setName(newName);
+
     try {
-      const response = await fetch(`http://localhost:3001/countries/${countryName}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (typeof onSearch === 'function') {
+        // Solo realiza la búsqueda si el nombre no está vacío
+        if (newName.trim() !== '') {
+          onSearch(newName);
+        }
+      } else {
+        console.error('onSearch no es una función');
       }
-
-      const data = await response.json();
-      externalOnSearch(data[0]); // Llama a la función de callback con el primer país del array
-      setCountryName(""); // Limpia el campo de búsqueda después de agregar el país
     } catch (error) {
-      console.error("Error al obtener datos", error);
+      console.error('Error al obtener los países:', error);
     }
-  };
-
-  const handleChange = (event) => {
-    setCountryName(event.target.value);
-  };
+  }
 
   return (
     <div className={style.container}>
-      <input
-        value={countryName}
-        id="inputSearch"
-        type="search"
-        onChange={handleChange}
-      />
-      <button onClick={handleSearch}>Agregar</button>
+      <input value={name} id="inputSearch" type="search" onChange={handleChange} />
     </div>
   );
 }

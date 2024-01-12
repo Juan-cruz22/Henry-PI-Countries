@@ -1,7 +1,44 @@
+*{
+    text-decoration: none;
+}
+
 .container{
-    background-color: greenyellow;
-    width: 400px;
-    align-items: center;
-    align-content: center;
-    margin: 20px;
+    background: rgba(230, 230, 230, 0.763);
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: none;
+    width: 250px;
+    max-height: 250px;
+    margin-top: 10px;
+    border-radius: 10px ;
+    border-bottom: solid 3px rgba(0, 0, 0, 0.494);
+    border-right: solid 3px rgb(0, 0, 0, 0.494);
+}
+
+.container:hover{
+    transition: all 1s;
+    background-color: rgb(172, 172, 172);
+    border-bottom: solid 3px rgba(0, 0, 0, 0);
+    border-right: solid 3px rgb(0, 0, 0, 0);
+}
+
+.flag{
+    max-width: 200px;
+}
+
+.name{
+    color: rgb(0, 0, 0);
+    font-size: 2vwpx;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.continente{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    margin-top: 10px;
 }

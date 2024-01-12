@@ -1,0 +1,14 @@
+.pagination{
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    align-content: center;
+    display: flex;
+}
+
+.button{
+    background-color: black;
+    color: white;
+
+}

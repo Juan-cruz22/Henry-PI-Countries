@@ -23,7 +23,6 @@ export default function Cards({
           name={country?.name?.common || "Nombre no disponible"}
           continente={country?.continents || "Región no disponible"}
           flag={country?.flags?.png || "Bandera no disponible"}
-          onRemove={() => onRemove(index)}
         />
       ))}
       <div className={style.pagination}>

@@ -1,5 +1,6 @@
 body {
-  background-image: url(https://img1.wallspic.com/crops/5/5/6/8/18655/18655-paisaje_urbano-area_urbana-urbe-area_metropolitana-la_via_navegable-3840x2160.jpg);
+  backdrop-filter: blur(3px);
+  background-image: url(https://www.hdwallpapers.in/download/burj_al_arab_hotel_cityscape_night_lights_dubai_4k_5k_hd_travel-HD.jpg);
   margin: 0;
   padding: 0;
   width: 100%;

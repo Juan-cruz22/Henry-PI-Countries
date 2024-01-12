@@ -6,11 +6,10 @@ function Card(props) {
   return (
     <div className={style.container}>
       <Link to={`/detail/${props.name}`}>
-        <img src={props.flag} alt={`Flag of ${props.name}`} />
-        <h2>name: {props.name}</h2>
-        <h2>continente: {props.continente}</h2>
+      <h2 className={style.name}>{props.name}</h2>
+        <img src={props.flag} className={style.flag} alt={`Flag of ${props.name}`} />
+        <h2 className={style.continente}>{props.continente}</h2>
       </Link>
-      <button onClick={props.onRemove}>Cerrar</button>
     </div>
   );
 }
