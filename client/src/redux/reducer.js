@@ -1,7 +1,7 @@
 import { FILTER_CONTINENTS } from "./actions-type";
 
 const initialState = {
-  continents: "All", // Definir un continente predeterminado
+  continents: "All",
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import style from './homepage.module.css';
 import Cards from '../Countries/Countries';
 import Searchbar from '../SearchBar/Searchbar';
 import Pagination from '../Paginado/Paginado';
@@ -8,66 +7,66 @@ import PopulationSortBar from  '../SortBar/PopulationSortBar';
 import SortBar from '../SortBar/SortBar';
 
 const Homepage = ({ countries, onSearch }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [filteredCountries, setFilteredCountries] = useState(countries);
-  const [selectedContinent, setSelectedContinent] = useState('All');
-  const [selectedSort, setSelectedSort] = useState('nameAsc');
-  const [selectedPopulationSort, setSelectedPopulationSort] = useState('asc'); // Nuevo estado para la ordenación por población
-  const cardsPerPage = 10;
+  const [paginaActual, setPaginaActual] = useState(1);
+  const [paisFiltrado, setPaisFiltrado] = useState(countries);
+  const [continenteSeleccionado, setContinenteSeleccionado] = useState('All');
+  const [ordenSeleccionado, setOrdenSeleccionado] = useState('nameAsc');
+  const [ordenPoblacion, setOrdenPoblacion] = useState('asc'); 
+  const cardsxpagina = 10;
+
 
   useEffect(() => {
-    // Filtrar y ordenar los países cuando cambia el continente seleccionado, la ordenación o la ordenación por población
-    let sortedCountries = [...countries];
+    let ordenCountries = [...countries];
 
-    if (selectedContinent !== 'All') {
-      sortedCountries = sortedCountries.filter((country) =>
-        country.continents.includes(selectedContinent)
+    if (continenteSeleccionado !== 'All') {
+      ordenCountries = ordenCountries.filter((country) =>
+        country.continents.includes(continenteSeleccionado)
       );
     }
 
-    if (selectedSort === 'nameAsc') {
-      sortedCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
-    } else if (selectedSort === 'nameDesc') {
-      sortedCountries.sort((a, b) => b.name.common.localeCompare(a.name.common));
+    if (ordenSeleccionado === 'nameAsc') {
+      ordenCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+    } else if (ordenSeleccionado === 'nameDesc') {
+      ordenCountries.sort((a, b) => b.name.common.localeCompare(a.name.common));
     }
 
-    if (selectedPopulationSort === 'asc') {
-      sortedCountries.sort((a, b) => a.population - b.population);
-    } else if (selectedPopulationSort === 'desc') {
-      sortedCountries.sort((a, b) => b.population - a.population);
+    if (ordenPoblacion === 'asc') {
+      ordenCountries.sort((a, b) => a.population - b.population);
+    } else if (ordenPoblacion === 'desc') {
+      ordenCountries.sort((a, b) => b.population - a.population);
     }
 
-    setFilteredCountries(sortedCountries);
-    setCurrentPage(1); // Resetear la página actual al cambiar el continente, la ordenación o la ordenación por población
-  }, [selectedContinent, selectedSort, selectedPopulationSort, countries]);
+    setPaisFiltrado(ordenCountries);
+    setPaginaActual(1);
+  }, [continenteSeleccionado, ordenSeleccionado, ordenPoblacion, countries]);
 
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = filteredCountries.slice(indexOfFirstCard, indexOfLastCard);
+  const indexOfUltimaCard = paginaActual * cardsxpagina;
+  const indexOfPrimeraCard = indexOfUltimaCard - cardsxpagina;
+  const cardsActuales = paisFiltrado.slice(indexOfPrimeraCard, indexOfUltimaCard);
 
   const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setPaginaActual(pageNumber);
   };
 
-  const handleFilterChange = (filteredContinent) => {
-    setSelectedContinent(filteredContinent);
+  const handleFilterChange = (continenteSeleccionado) => {
+    setContinenteSeleccionado(continenteSeleccionado);
   };
 
-  const handleSortChange = (selectedSort) => {
-    setSelectedSort(selectedSort);
+  const handleSortChange = (ordenSeleccionado) => {
+    setOrdenSeleccionado(ordenSeleccionado);
   };
 
-  const handlePopulationSortChange = (selectedPopulationSort) => {
-    setSelectedPopulationSort(selectedPopulationSort);
+  const handlePopulationSortChange = (ordenPoblacion) => {
+    setOrdenPoblacion(ordenPoblacion);
   };
 
   return (
     <>
       <Filtrosbar onFilterChange={handleFilterChange} />
       <SortBar onSortChange={handleSortChange}/>
-      <PopulationSortBar onPopulationSortChange={handlePopulationSortChange} /> {/* Agrega la nueva barra de ordenación por población */}
-      <Cards countries={currentCards} />
-      <Pagination cardsPerPage={cardsPerPage} totalCards={filteredCountries.length} paginate={paginate} />
+      <PopulationSortBar onPopulationSortChange={handlePopulationSortChange} />
+      <Cards countries={cardsActuales} />
+      <Pagination cardsxpagina={cardsxpagina} totalCards={paisFiltrado.length} paginate={paginate} />
     </>
   );
 };

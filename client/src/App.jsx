@@ -35,7 +35,7 @@ function App() {
       setCountries([]);
     }
   };
-  const showSearchbar = location.pathname !== '/' && !location.pathname.startsWith('/detail');
+  const showSearchbar = location.pathname !== '/' && location.pathname !== '/actividad' && !location.pathname.startsWith('/detail');
   return (
     <>
       {showSearchbar && <Searchbar onSearch={onSearch} />}
@@ -43,6 +43,7 @@ function App() {
         <Route path='/' element={<Landingpage />} />
         <Route path='/home' element={<Homepage countries={countries} onSearch={onSearch} />} />
         <Route path='/detail/:name' element={<Detailcountrie />} />
+        <Route path='/activities' element={<Form />} />
       </Routes>
     </>
   );

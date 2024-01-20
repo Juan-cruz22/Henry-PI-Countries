@@ -23,7 +23,6 @@ const Detailcountrie = () => {
                 console.error("Error al obtener datos", error);
                 if (error.response) {
                     console.error("Respuesta del servidor:", error.response.data);
-                    console.error("Código de estado HTTP:", error.response.status);
                 }
                 window.alert('Error al obtener datos del país');
             });

@@ -4,15 +4,15 @@ import style from "./countries.module.css";
 
 export default function Cards({
   countries,
-  onRemove,
   totalCountries,
-  countriesPerPage,
-  paginate,
+  countriesPorPage,
+  pagina,
 }) {
-  const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalCountries / countriesPerPage); i++) {
-    pageNumbers.push(i);
+  const paginas = [];
+
+  for (let i = 1; i <= Math.ceil(totalCountries / countriesPorPage); i++) {
+    paginas.push(i);
   }
 
   return (
@@ -25,9 +25,9 @@ export default function Cards({
           flag={country?.flags?.png || "Bandera no disponible"}
         />
       ))}
-      <div className={style.pagination}>
-        {pageNumbers.map((number) => (
-          <button key={number} onClick={() => paginate(number)}>
+      <div className={style.paginas}>
+        {paginas.map((number) => (
+          <button key={number} onClick={() => pagina(number)}>
             {number}
           </button>
         ))}

@@ -15,7 +15,7 @@ export default function Filtrosbar({ onFilterChange }) {
 
   return (
     <div className={style.container}>
-    <label className={style.label}>Filter by Region:</label>
+    <label className={style.label}>Filtrar por Region:</label>
       <select className={style.select} onChange={handleFilterContinent} value={selectedContinent}>
         <option value="All">All</option>
         <option value="Oceania">Oceania</option>

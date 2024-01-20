@@ -1,4 +1,4 @@
-.container{
+.containerbar{
     display: flex;
     align-items: center;
     align-content: center;
@@ -8,7 +8,7 @@
     height: 80px;
 }
 
-input{
+.inputbar{
 width: 400px;
 height: 50px;
 text-align: center;
@@ -16,4 +16,31 @@ font-size: 30px;
 background-color: rgba(0, 0, 0, 0);
 color: white;
 border-radius: 10px;
+}
+
+.inputbar::placeholder{
+    color: rgba(255, 255, 255, 0.664);
+}
+
+.titlebar{
+    color: white;
+    margin-right: 240px;
+    font-size: 50px;
+}
+
+.buttonbar{
+    background-color: #8dcb2f12;
+    width: 200px;
+    height: 50px;
+    margin-right: 200px;
+    color: white;
+    font-size: 20px;
+    border: none;
+    font-weight: 600;
+    box-shadow: #454545 2px 2px 1px 1.5px;
+}
+
+.buttonbar:hover{
+    cursor: pointer;
+    box-shadow: #454545 1px 1px 1px 1.5px;
 }

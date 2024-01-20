@@ -31,7 +31,7 @@ h3{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 0px; /* Puedes ajustar el espacio entre el título y el botón */
+    margin-top: 0px;
     margin-left: 800px;
 }
 

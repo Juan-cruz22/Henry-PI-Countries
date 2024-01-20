@@ -9,11 +9,11 @@ const PopulationSortBar = ({ onPopulationSortChange }) => {
 
   return (
     <div className={style.container}>
-      <label htmlFor="populationSort">Sort by Population:</label>
+      <label htmlFor="populationSort">Ordenar por Poblacion:</label>
       <select id="populationSort" onChange={handlePopulationSortChange}>
         <option value="default">Default</option>
-        <option value="asc">Lowest to Highest</option>
-        <option value="desc">Highest to Lowest</option>
+        <option value="asc">Menor poblacion</option>
+        <option value="desc">Mayor poblacion</option>
       </select>
     </div>
   );

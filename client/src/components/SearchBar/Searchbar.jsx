@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import style from "./Searchbar.module.css";
 import axios from "axios";
+import style from "./Searchbar.module.css";
+import { Link } from "react-router-dom";
 
 export default function Searchbar({ onSearch }) {
   const [name, setName] = useState('');
@@ -11,7 +12,6 @@ export default function Searchbar({ onSearch }) {
 
     try {
       if (typeof onSearch === 'function') {
-        // Solo realiza la búsqueda si el nombre no está vacío
         if (newName.trim() !== '') {
           onSearch(newName);
         }
@@ -24,8 +24,12 @@ export default function Searchbar({ onSearch }) {
   }
 
   return (
-    <div className={style.container}>
-      <input value={name} id="inputSearch" type="search" onChange={handleChange} />
+    <div className={style.containerbar}>
+      <h4 className={style.titlebar}>countries</h4>
+      <Link to={'/activities'}>
+      <button className={style.buttonbar}>Crear actividad</button>
+      </Link>
+      <input className={style.inputbar} value={name} id="inputSearch" type="search" placeholder="Buscar país..." onChange={handleChange} />
     </div>
   );
 }

@@ -9,10 +9,10 @@ const SortBar = ({ onSortChange }) => {
 
   return (
     <div className={style.container}>
-      <label htmlFor="sort">Sort by:</label>
+      <label htmlFor="sort">Orden:</label>
       <select id="sort" onChange={handleSortChange}>
-        <option value="nameAsc">Name A-Z</option>
-        <option value="nameDesc">Name Z-A</option>
+        <option value="nameAsc">nombre A-Z</option>
+        <option value="nameDesc">nombre Z-A</option>
       </select>
     </div>
   );
