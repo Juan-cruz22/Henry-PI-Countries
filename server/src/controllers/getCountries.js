@@ -9,7 +9,6 @@ const getCountries = async (req, res) => {
         const countries = response.data;
 
         if (countries && countries.length > 0) {
-            // Devolver un arreglo con toda la información de cada país
             return res.status(200).json(countries);
         } else {
             return res.status(404).send('No se encontraron países');

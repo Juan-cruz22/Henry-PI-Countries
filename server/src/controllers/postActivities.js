@@ -4,21 +4,13 @@ const createActivity = async (req, res) => {
   try {
     const { name, difficulty, duration, season, countries } = req.body;
 
-    if (!name || !difficulty || !duration || !season || !countries || countries.length === 0) {
-      return res.status(400).json({ error: 'Todos los campos son obligatorios, y debe haber al menos un país asociado.' });
+    const nuevaActividad = await Activity.create({ name, difficulty, duration, season });
+
+    const countriesEnDb = await Country.findAll({ where: { name: countries } });
+
+    if (countriesEnDb.length > 0) {
+      await nuevaActividad.addCountries(countriesEnDb);
     }
-
-    // Crear la actividad en la base de datos
-    const newActivity = await Activity.create({
-      name,
-      difficulty,
-      duration,
-      season,
-    });
-
-    // Asociar la actividad con los países proporcionados
-    const countriesInDb = await Country.findAll({ where: { name: countries } });
-    await newActivity.setCountries(countriesInDb);
 
     return res.status(201).json({ message: 'Actividad creada exitosamente.' });
   } catch (error) {
