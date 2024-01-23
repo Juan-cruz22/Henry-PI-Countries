@@ -14,7 +14,7 @@ const getCountriesbyName = async (req, res) => {
 
     const response = await axios.get(`${URL}/countries`);
     const matchingCountries = response.data.filter(country =>
-      country.name.common.toLowerCase().includes(lowercaseName)
+      country.name.common.toLowerCase().includes(lowercaseName) // el lowercaseName comprueba si la cadena contien una subcadena. ({name: {common:"Argentina"}})
     );
 
     if (matchingCountries.length > 0) {
