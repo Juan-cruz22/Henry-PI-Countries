@@ -13,12 +13,18 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/countries')
+    fetch('http://localhost:3001/countries')
       .then(response => {
-        setCountries(response.data);
+        if (!response.ok) {
+          throw new Error('Error al obtener los países: ' + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setCountries(data);
       })
       .catch(error => {
-        console.error('Error al obtener los países:', error);
+        console.error(error);
       });
   }, []);
 
@@ -35,7 +41,7 @@ function App() {
       setCountries([]);
     }
   };
-  const showSearchbar = location.pathname !== '/' && location.pathname !== '/actividad' && !location.pathname.startsWith('/detail');
+  const showSearchbar = location.pathname !== '/' && location.pathname !== '/actividad' && location.pathname !== '/activities' && !location.pathname.startsWith('/detail');
   return (
     <>
       {showSearchbar && <Searchbar onSearch={onSearch} />}

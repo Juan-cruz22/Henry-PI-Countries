@@ -15,57 +15,60 @@ const Form = () => {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/activities")
-      .then(response => {
+    axios
+      .get("http://localhost:3001/activities")
+      .then((response) => {
         setActivities(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error al obtener las actividades:", error);
       });
   }, []);
 
+
+
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-  
-    if (name === "countries") {
-      setActivity((prevActivity) => ({
-        ...prevActivity,
-        [name]: value.split(",").map(country => country.trim()),
-      }));
-    } else {
-      setActivity((prevActivity) => ({
-        ...prevActivity,
-        [name]: value,
-      }));
-    }
 
-  
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: "",
+    setActivity((prevActivity) => ({
+      ...prevActivity,
+      [name]: value,
     }));
   };
 
- const handleSubmit = async (event) => {
-  event.preventDefault();
+  useEffect(() => {
+    const validateinput = async () => {
+      const validationErrors = validation(activity);
+      setErrors(validationErrors);
+    };
 
-  const validationErrors = validation(activity);
-  setErrors(validationErrors);
+    validateinput();
+  }, [activity]);
 
-  if (Object.keys(validationErrors).length === 0) {
-    try {
-console.log("Datos a enviar:", activity);
-await axios.post("http://localhost:3001/activities", activity);
 
-  const response = await axios.get("http://localhost:3001/activities");
-      setActivities(response.data);
 
-      console.log("Formulario enviado con éxito!");
-    } catch (error) {
-      console.error('Error al realizar la solicitud:', error.message);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const validationErrors = validation(activity);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      try {
+        console.log("Datos a enviar:", activity);
+        await axios.post("http://localhost:3001/activities", activity);
+
+        const response = await axios.get("http://localhost:3001/activities");
+        setActivities(response.data);
+
+        console.log("Formulario enviado con éxito!");
+      } catch (error) {
+        console.error("Error al realizar la solicitud:", error.message);
+      }
     }
-  }
-};
+  };
 
   return (
     <div>
